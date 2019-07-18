@@ -69,6 +69,23 @@
       return Math.floor(Math.random() * (canvas.height - 100));
     }
 
+    const normalAppleAsync = async (body) => {
+      if (verifyCollisionApple(body, apple)) {
+        addMoreBody(new fabric.Rect({
+          ...snakeModel
+        }));
+        score += 1;
+        if (score % 10 === 0) {
+          fps += 0.5;
+          interval = 1000 / fps;
+        }
+
+        updateTexts();
+        respawnApple();
+        spawnRareApple();
+      }
+    };
+
     const rareAsync = async (body) => {
       for (index in rareApple) {
         const rare = rareApple[index];
@@ -107,8 +124,8 @@
           snakes = snakes.slice(snakesLength, snakes.length);
           halfSnakes.forEach(el => canvas.remove(el));
 
-          canvas.remove(ultra);
           ultraRareApple.splice(index, 1);
+          canvas.remove(ultra);
         }
       }
     };
@@ -194,21 +211,7 @@
           ...headPos
         });
 
-        if (verifyCollisionApple(body, apple)) {
-          addMoreBody(new fabric.Rect({
-            ...snakeModel
-          }));
-          score += 1;
-          if (score % 10 === 0) {
-            fps += 0.5;
-            interval = 1000 / fps;
-          }
-
-          updateTexts();
-          respawnApple();
-          spawnRareApple();
-        }
-
+        normalAppleAsync(body);
         rareAsync(body);
         ultraRareAsync(body);
 
@@ -310,6 +313,7 @@
         canvas.add(ultra);
         setTimeout(function () {
           canvas.remove(ultra);
+          ultraRareApple.pop();
         }, 1500);
       }
     }
