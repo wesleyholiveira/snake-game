@@ -168,8 +168,8 @@
       const distanceTop = Math.abs(head.top - appleObject.top);
       // console.log(distanceLeft, distanceTop, appleObject.type);
       return (
-        distanceLeft >= 0 && distanceLeft <= appleModel.width &&
-        distanceTop >= 0 && distanceTop <= appleModel.height
+        distanceLeft == 0 &&
+        distanceTop == 0
       );
     }
 
