@@ -43,7 +43,7 @@
 
     const snakeModel = {
       left: 0,
-      top: (canvas.height - 50) / 2,
+      top: 0,
       width: 50,
       height: 50,
       fill: '#000000'
@@ -62,11 +62,13 @@
     }
 
     function randomPosX() {
-      return Math.floor(Math.random() * (canvas.width - 100));
+      const x =  Math.floor(Math.random() * canvas.width);
+      return x - (x % snakeModel.width);
     }
 
     function randomPosY() {
-      return Math.floor(Math.random() * (canvas.height - 100));
+      const y =  Math.floor(Math.random() * canvas.height);
+      return y - (y % snakeModel.height);
     }
 
     const normalAppleAsync = async (body) => {
