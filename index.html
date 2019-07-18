@@ -56,7 +56,7 @@
       fill: 'red'
     };
     const textModel = {
-      left: canvas.width - 150,
+      left: canvas.width - 200,
       top: 20,
       fontSize: 35
     }
@@ -237,7 +237,7 @@
       canvas.add(body);
     }
 
-    function newHead(snakes) {
+    function defineHeadColor(snakes) {
       const head = snakes.length - 1;
       snakes[head].fill = 'red';
     }
@@ -247,7 +247,7 @@
       for (let i = 0; i < snakes.length; i++) {
         snakes[i].parent = snakes[i + 1];
       }
-      newHead(snakes);
+      defineHeadColor(snakes);
     }
 
     function createSnake(bodiesQuantity) {
