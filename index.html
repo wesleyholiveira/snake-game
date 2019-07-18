@@ -211,14 +211,14 @@
           ...headPos
         });
 
-        normalAppleAsync(body);
-        rareAsync(body);
-        ultraRareAsync(body);
-
         if (verifyCollisionBody(body)) {
           alert('YOU DIED.\nScore: ' + score);
           reset();
         }
+
+        normalAppleAsync(body);
+        rareAsync(body);
+        ultraRareAsync(body);
 
       } else {
         const top = parent.top;
