@@ -62,12 +62,12 @@
     }
 
     function randomPosX() {
-      const x =  Math.floor(Math.random() * canvas.width);
+      const x =  Math.floor(Math.random() * canvas.width) - snakeModel.width;
       return x - (x % snakeModel.width);
     }
 
     function randomPosY() {
-      const y =  Math.floor(Math.random() * canvas.height);
+      const y =  Math.floor(Math.random() * canvas.height) - snakeModel.height;
       return y - (y % snakeModel.height);
     }
 
